@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio - Gustavo Soares Correa</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-dark: #0284c7;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --success: #22c55e;
+    }
+
+    body.light-mode {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --accent: #0284c7;
+      --accent-dark: #1e40af;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body.light-mode {
+      background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 50%, #e0f2fe 100%);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .header-controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    button {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+    }
+
+    button:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(56, 189, 248, 0.4);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: 1px solid var(--border);
+      padding: 8px;
+      box-shadow: none;
+    }
+
+    .menu-toggle span {
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-section {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(59, 130, 246, 0.1));
+      padding: 40px;
+      margin-bottom: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      animation: slideInDown 0.6s ease;
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      min-height: 1.6em;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 999px;
+      color: var(--success);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 20px;
+      background: rgba(15, 23, 42, 0.4);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    body.light-mode .stat {
+      background: rgba(226, 232, 240, 0.4);
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: linear-gradient(145deg, var(--card), rgba(17, 24, 39, 0.5));
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      padding: 36px;
+      backdrop-filter: blur(10px);
+      animation: slideInUp 0.6s ease;
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* ===== QUICK CONTACT ===== */
+    .quick-contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .contact-btn {
+      padding: 12px 16px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .contact-btn:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .location-badge {
+      padding: 12px 16px;
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .copy-tooltip {
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .contact-btn.copied .copy-tooltip {
+      opacity: 1;
+    }
+
+    /* ===== MAIN GRID ===== */
+    main {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 32px;
+    }
+
+    section {
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .content-section {
+      margin-bottom: 28px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin: 0;
+      color: var(--text);
+    }
+
+    .text-block {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -27px;
+      top: 0;
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border: 3px solid var(--card);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.4);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    .timeline-content {
+      background: rgba(15, 23, 42, 0.4);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    body.light-mode .timeline-content {
+      background: rgba(226, 232, 240, 0.3);
+    }
+
+    .timeline-item:hover .timeline-content {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .job-header h3 {
+      font-size: 1.1rem;
+      margin: 0;
+      color: var(--accent);
+    }
+
+    .job-date {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .job-role {
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .job-tasks {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .job-tasks li {
+      color: var(--text);
+      margin-bottom: 6px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .job-tasks li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* ===== EDUCATION ===== */
+    .education-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .edu-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px;
+      background: rgba(15, 23, 42, 0.4);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    body.light-mode .edu-item {
+      background: rgba(226, 232, 240, 0.3);
+    }
+
+    .edu-item:hover {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .edu-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .edu-item h3 {
+      font-size: 0.95rem;
+      margin: 0 0 4px 0;
+      color: var(--text);
+    }
+
+    .edu-item p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ===== SKILLS GRID ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .skill-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 16px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(59, 130, 246, 0.05));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .skill-box:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(59, 130, 246, 0.1));
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .skill-icon {
+      font-size: 1.8rem;
+    }
+
+    .skill-box span:last-child {
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ===== SKILLS ACCORDION ===== */
+    .skills-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .skill-accordion-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.3);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    body.light-mode .skill-accordion-item {
+      background: rgba(226, 232, 240, 0.2);
+    }
+
+    .skill-accordion-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      background: none;
+      border: none;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .skill-accordion-btn:hover {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+    }
+
+    .skill-accordion-btn .skill-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .skill-accordion-btn .skill-name {
+      flex: 1;
+    }
+
+    .skill-toggle {
+      font-size: 1.5rem;
+      color: var(--accent);
+      font-weight: bold;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-accordion-item.active .skill-toggle {
+      transform: rotate(45deg);
+    }
+
+    .skill-accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      border-top: 1px solid var(--border);
+    }
+
+    .skill-accordion-item.active .skill-accordion-content {
+      max-height: 1000px;
+    }
+
+    .skill-accordion-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .skill-intro {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .skill-details {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .skill-details li {
+      padding-left: 18px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .skill-details li:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-details li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .skill-benefit {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0;
+      padding: 10px 12px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+    }
+
+    /* ===== BADGES ===== */
+    .badges-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge-skill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .badge-skill:hover {
+      background: var(--accent);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* ===== LANGUAGES ===== */
+    .language-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: rgba(15, 23, 42, 0.3);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .lang-name {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .lang-level {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .lang-level.advanced {
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--success);
+    }
+
+    .lang-level.developing {
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--accent);
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-section {
+      margin-top: 28px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.5);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    body.light-mode .form-group input,
+    body.light-mode .form-group textarea {
+      background: rgba(226, 232, 240, 0.5);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-submit {
+      align-self: flex-start;
+      padding: 12px 24px;
+    }
+
+    .success-message {
+      color: var(--success);
+      font-weight: 600;
+      margin-top: 12px;
+      display: none;
+      font-size: 0.9rem;
+    }
+
+    /* ===== SOCIAL LINKS ===== */
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateX(4px);
+    }
+
+    .social-icon {
+      font-size: 1.3rem;
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      body {
+        padding: 0;
+        background: white;
+      }
+
+      .header-controls,
+      .contact-section,
+      .menu-toggle {
+        display: none !important;
+      }
+
+      .card,
+      .hero-section {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        background: white;
+      }
+
+      * {
+        color: black;
+      }
+
+      a {
+        color: black;
+      }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-section {
+        padding: 24px;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .quick-contact {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-controls">
+      <div class="btn-group">
+        <button id="darkModeBtn" title="Alternar tema">🌙 Tema</button>
+        <button id="downloadBtn" title="Baixar CV como PDF">📥 Baixar CV</button>
+      </div>
+      <button class="menu-toggle" id="menuToggle" title="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="card hero-section">
+      <div class="hero-content">
+        <h1>Gustavo Soares Correa</h1>
+        <p class="typing"></p>
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Aberto a oportunidades
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">Anos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Idiomas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Cursos</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <!-- Contato rápido -->
+      <div class="quick-contact">
+        <a href="tel:+5516997106042" class="contact-btn">📞 Ligar: (16) 99710-6042</a>
+        <a href="javascript:void(0)" onclick="copyEmail(event)" class="contact-btn">📧 Email
+          <span class="copy-tooltip">Copiado!</span>
+        </a>
+        <a href="https://www.linkedin.com/in/gustavo-soares-corrêa-807669265" target="_blank" class="contact-btn">🔗 LinkedIn</a>
+        <span class="location-badge">📍 Itirapuã – SP</span>
+      </div>
+
+      <main>
+        <!-- Coluna esquerda -->
+        <div>
+          <!-- Sobre -->
+          <section class="content-section" id="about">
+            <div class="section-header">
+              <span style="font-size: 1.4rem;">👤</span>
+              <h2>Sobre Mim</h2>
+            </div>
+            <div class="text-block">
+              Profissional com experiência em atendimento ao cliente, formação técnica em Administração e cursando Análise e Desenvolvimento de Sistemas. Forte em comunicação, resolução de problemas e adaptação a novos ambientes. Busco unir conhecimento de relacionamento com clientes à tecnologia.
+            </div>
+          </section>
+
+          <!-- Experiência -->
+          <section class="content-section" id="experience">
+            <div class="section-header">
+              <span style="font-size: 1.4rem;">💼</span>
+              <h2>Experiência</h2>
+            </div>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="job-header">
+                    <h3>Magazine Luiza</h3>
+                    <span class="job-date">02/2024 – 08/2024</span>
+                  </div>
+                  <p class="job-role">Agente de Relacionamento (SAC)</p>
+                  <ul class="job-tasks">
+                    <li>Atendimento via canais digitais e telefônicos</li>
+                    <li>Resolução de problemas de produtos e entregas</li>
+                    <li>Gestão de chamados em sistemas internos</li>
+                    <li>Mediação de conflitos com clientes</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Educação -->
+          <section class="content-section" id="education">
+            <div class="section-header">
+              <span style="font-size: 1.4rem;">🎓</span>
+              <h2>Educação</h2>
+            </div>
+            <div class="education-list">
+              <div class="edu-item">
+                <div class="edu-icon">📚</div>
+                <div>
+                  <h3>Análise e Desenvolvimento de Sistemas</h3>
+                  <p>Unifran • <strong>Cursando</strong></p>
+                </div>
+              </div>
+              <div class="edu-item">
+                <div class="edu-icon">✅</div>
+                <div>
+                  <h3>Técnico em Administração</h3>
+                  <p>ETEC Dr. Júlio Cardoso • <strong>Concluído</strong></p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Contato -->
+          <section class="contact-section" id="contact">
+            <div class="section-header">
+              <span style="font-size: 1.4rem;">✉️</span>
+              <h2>Enviar Mensagem</h2>
+            </div>
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Seu nome" required />
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Seu email" required />
+              </div>
+              <div class="form-group">
+                <textarea id="message" name="message" placeholder="Sua mensagem" required></textarea>
+              </div>
+              <button type="submit" class="form-submit">Enviar Mensagem</button>
+              <div class="success-message" id="successMessage">✓ Mensagem enviada com sucesso!</div>
+            </form>
+          </section>
+        </div>
+
+        <!-- Coluna direita -->
+        <div>
+          <!-- Competências Técnicas -->
+          <section class="content-section" id="skills">
+            <div class="section-header">
+              <span style="font-size: 1.4rem;">🛠️</span>
+              <h2>Competências Técnicas</h2>
+            </div>
+            <div class="skills-accordion">
+              <!-- Pacote Office -->
+              <div class="skill-accordion-item">
+                <button class="skill-accordion-btn">
+                  <span class="skill-icon">📊</span>
+                  <span class="skill-name">Pacote Office (Word, Excel, PowerPoint)</span>
+                  <span class="skill-toggle">+</span>
+                </button>
+                <div class="skill-accordion-content">
+                  <p class="skill-intro">Domínio das principais ferramentas de produtividade utilizadas em ambientes corporativos.</p>
+                  <ul class="skill-details">
+                    <li><strong>Word:</strong> criação e formatação de documentos profissionais, relatórios e textos estruturados.</li>
+                    <li><strong>Excel:</strong> organização de dados, criação de planilhas, uso de fórmulas básicas e interpretação de informações.</li>
+                    <li><strong>PowerPoint:</strong> desenvolvimento de apresentações visuais claras e objetivas.</li>
+                  </ul>
+                  <p class="skill-benefit">Essa competência demonstra capacidade de organização, comunicação e apoio a rotinas administrativas.</p>
+                </div>
+              </div>
+
+              <!-- Sistemas de Atendimento e CRM -->
+              <div class="skill-accordion-item">
+                <button class="skill-accordion-btn">
+                  <span class="skill-icon">🔧</span>
+                  <span class="skill-name">Sistemas de Atendimento e CRM</span>
+                  <span class="skill-toggle">+</span>
+                </button>
+                <div class="skill-accordion-content">
+                  <p class="skill-intro">Experiência com plataformas utilizadas para registrar, acompanhar e resolver solicitações de clientes.</p>
+                  <p>CRM (Customer Relationship Management) é um sistema que centraliza informações do cliente, histórico de atendimento e status de chamados.</p>
+                  <p class="skill-benefit">Essa habilidade mostra que você sabe trabalhar com ferramentas corporativas, manter registros organizados e oferecer atendimento eficiente e profissional.</p>
+                </div>
+              </div>
+
+              <!-- Lógica de Programação -->
+              <div class="skill-accordion-item">
+                <button class="skill-accordion-btn">
+                  <span class="skill-icon">💡</span>
+                  <span class="skill-name">Noções de Lógica de Programação</span>
+                  <span class="skill-toggle">+</span>
+                </button>
+                <div class="skill-accordion-content">
+                  <p class="skill-intro">Conhecimento dos princípios fundamentais que estruturam qualquer linguagem de programação, como:</p>
+                  <ul class="skill-details">
+                    <li>Variáveis</li>
+                    <li>Condições</li>
+                    <li>Loops</li>
+                    <li>Funções</li>
+                    <li>Algoritmos</li>
+                  </ul>
+                  <p class="skill-benefit">Essa base é essencial para quem está iniciando na área de tecnologia, pois permite compreender como sistemas funcionam e como resolver problemas de forma estruturada.</p>
+                </div>
+              </div>
+
+              <!-- Desenvolvimento de Sistemas -->
+              <div class="skill-accordion-item">
+                <button class="skill-accordion-btn">
+                  <span class="skill-icon">⚙️</span>
+                  <span class="skill-name">Conceitos de Desenvolvimento de Sistemas (ADS)</span>
+                  <span class="skill-toggle">+</span>
+                </button>
+                <div class="skill-accordion-content">
+                  <p class="skill-intro">Compreensão dos fundamentos aprendidos no curso de Análise e Desenvolvimento de Sistemas, incluindo:</p>
+                  <ul class="skill-details">
+                    <li>Análise de requisitos</li>
+                    <li>Modelagem de sistemas</li>
+                    <li>Banco de dados</li>
+                    <li>Desenvolvimento de software</li>
+                    <li>Metodologias ágeis</li>
+                  </ul>
+                  <p class="skill-benefit">Essa competência reforça seu perfil em formação na área de TI e sua capacidade de evoluir para funções técnicas.</p>
+                </div>
+              </div>
+
+              <!-- Organização de Processos -->
+              <div class="skill-accordion-item">
+                <button class="skill-accordion-btn">
+                  <span class="skill-icon">📋</span>
+                  <span class="skill-name">Organização de Processos Administrativos</span>
+                  <span class="skill-toggle">+</span>
+                </button>
+                <div class="skill-accordion-content">
+                  <p class="skill-intro">Capacidade de estruturar rotinas, organizar documentos, acompanhar fluxos de trabalho e manter informações atualizadas.</p>
+                  <p class="skill-benefit">Essa habilidade é muito valorizada em áreas administrativas, atendimento e suporte, pois garante eficiência e clareza nas operações.</p>
+                </div>
+              </div>
+
+              <!-- Comunicação Digital -->
+              <div class="skill-accordion-item">
+                <button class="skill-accordion-btn">
+                  <span class="skill-icon">✍️</span>
+                  <span class="skill-name">Escrita Profissional e Comunicação Digital</span>
+                  <span class="skill-toggle">+</span>
+                </button>
+                <div class="skill-accordion-content">
+                  <p class="skill-intro">Habilidade para se comunicar de forma clara, educada e objetiva em ambientes digitais, como:</p>
+                  <ul class="skill-details">
+                    <li>E-mails</li>
+                    <li>Chats de atendimento</li>
+                    <li>Registros internos</li>
+                    <li>Documentação</li>
+                  </ul>
+                  <p class="skill-benefit">Essa competência é essencial para quem trabalha com atendimento ao cliente, suporte e áreas administrativas, pois garante precisão e profissionalismo na comunicação.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Habilidades -->
+          <section class="content-section" id="behavioral">
+            <div class="section-header">
+              <span style="font-size: 1.4rem;">⭐</span>
+              <h2>Habilidades</h2>
+            </div>
+            <div class="badges-grid">
+              <span class="badge-skill">💬 Comunicação</span>
+              <span class="badge-skill">🚀 Proatividade</span>
+              <span class="badge-skill">🔄 Flexibilidade</span>
+              <span class="badge-skill">🎯 Adaptação</span>
+              <span class="badge-skill">👥 Relacionamento</span>
+              <span class="badge-skill">🔍 Resolução</span>
+            </div>
+          </section>
+
+          <!-- Idiomas -->
+          <section class="content-section" id="languages">
+            <div class="section-header">
+              <span style="font-size: 1.4rem;">🌐</span>
+              <h2>Idiomas</h2>
+            </div>
+            <div class="language-list">
+              <div class="lang-item">
+                <div class="lang-name">Português</div>
+                <div class="lang-level advanced">Nativo</div>
+              </div>
+              <div class="lang-item">
+                <div class="lang-name">Espanhol</div>
+                <div class="lang-level advanced">Avançado</div>
+              </div>
+              <div class="lang-item">
+                <div class="lang-name">Inglês</div>
+                <div class="lang-level developing">Em Desenvolvimento</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Redes Sociais -->
+          <section class="content-section" id="social">
+            <div class="section-header">
+              <span style="font-size: 1.4rem;">🤝</span>
+              <h2>Conecte-se</h2>
+            </div>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/gustavo-soares-corrêa-807669265" target="_blank" class="social-btn">
+                <span class="social-icon">in</span>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://github.com" target="_blank" class="social-btn">
+                <span class="social-icon">⚙️</span>
+                <span>GitHub</span>
+              </a>
+              <a href="mailto:gscorreia546@gmail.com" class="social-btn">
+                <span class="social-icon">✉️</span>
+                <span>Email Direto</span>
+              </a>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Typing animation
+    function typeWriter() {
+      const text = "Atendimento • Administração • Desenvolvimento de Sistemas";
+      const element = document.querySelector('.typing');
+      let index = 0;
+
+      function type() {
+        if (index < text.length) {
+          element.textContent += text.charAt(index);
+          index++;
+          setTimeout(type, 40);
+        }
+      }
+
+      type();
+    }
+
+    // Dark mode toggle
+    function initDarkMode() {
+      const darkModeBtn = document.getElementById('darkModeBtn');
+      const savedMode = localStorage.getItem('darkMode');
+
+      if (savedMode === 'light') {
+        document.body.classList.add('light-mode');
+        darkModeBtn.textContent = '☀️ Tema';
+      }
+
+      darkModeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        const isLight = document.body.classList.contains('light-mode');
+        localStorage.setItem('darkMode', isLight ? 'light' : 'dark');
+        darkModeBtn.textContent = isLight ? '☀️ Tema' : '🌙 Tema';
+      });
+    }
+
+    // Copy email to clipboard
+    function copyEmail(event) {
+      event.preventDefault();
+      const email = 'gscorreia546@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        const btn = event.target.closest('.contact-btn');
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+
+    // Contact form submission
+    function initContactForm() {
+      const form = document.getElementById('contactForm');
+      const successMessage = document.getElementById('successMessage');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        // Show success message (fallback for client-side)
+        successMessage.style.display = 'block';
+        form.reset();
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 4000);
+      });
+    }
+
+    // Smooth scroll navigation
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+
+    // Download button now points to static PDF file
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      window.open('Curriculo.pdf', '_blank');
+    });
+
+    // Skills accordion
+    function initSkillsAccordion() {
+      const accordionItems = document.querySelectorAll('.skill-accordion-item');
+      
+      accordionItems.forEach(item => {
+        const btn = item.querySelector('.skill-accordion-btn');
+        btn.addEventListener('click', () => {
+          // Fechar todos os outros
+          accordionItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+            }
+          });
+          // Toggle o atual
+          item.classList.toggle('active');
+        });
+      });
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      typeWriter();
+      initDarkMode();
+      initContactForm();
+      initSkillsAccordion();
+    });
+  </script>
+</body>
+</html>
